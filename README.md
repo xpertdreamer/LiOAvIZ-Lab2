@@ -1,8 +1,8 @@
-## Build with CLion or 
+## Build with (on Linux)
 
 ```bash
 mkdir build
 cd build
 cmake ..
-cmake --build . --config Debug/Release
+cmake --build . 
 
