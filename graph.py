@@ -1,0 +1,38 @@
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.interpolate import make_interp_spline
+
+# Данные
+sizes = np.array([100, 200, 300, 400, 1000, 2000, 3000])
+times = np.array([0.004271, 0.030542, 0.118736, 0.237303, 5.300499, 43.908810, 183.361023])
+
+plt.figure(figsize=(10, 6))
+
+# Сглаживание линии
+sizes_smooth = np.linspace(sizes.min(), sizes.max(), 500)  # новые точки для плавности
+spl = make_interp_spline(sizes, times, k=3)  # кубическая сплайн-интерполяция
+times_smooth = spl(sizes_smooth)
+
+# Плавная линия
+plt.plot(sizes_smooth, times_smooth, color='b', label='Время умножения (плавно)')
+
+# Оригинальные точки
+plt.scatter(sizes, times, color='b', edgecolor='k', zorder=5, label='Измеренные точки')
+
+# Плавная линия n^3
+c = times[-1] / (sizes[-1]**3)
+plt.plot(sizes_smooth, c * sizes_smooth**3, linestyle='--', color='r', label=r'$N^3$ (масштабировано)')
+
+# Подписи и оформление
+plt.xlabel('Размер матрицы (N x N)')
+plt.ylabel('Время умножения (сек)')
+plt.title('Время умножения матриц разных размеров')
+plt.grid(True)
+plt.legend()
+
+# Настройка осей
+plt.xticks([100, 200, 300, 400, 1000, 2000, 3000])
+plt.yticks([0, 0.1, 1, 10, 50, 100, 200])
+
+plt.yscale('linear')
+plt.show()
