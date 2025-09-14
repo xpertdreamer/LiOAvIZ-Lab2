@@ -35,7 +35,7 @@ void Sorter::quick_sort(int *items, const int left, const int right) {
 
         if (i <= j) {
             y = items[i];
-            items[i] = items[y];
+            items[i] = items[j];
             items[j] = y;
             i++; j--;
         }
@@ -54,22 +54,22 @@ int *Sorter::create_random_array(int size) {
 
 
 int *Sorter::create_ascending_array(int size) {
-    auto arr = new int[size];
+    const auto arr = new int[size];
     for (int i = 0; i < size; ++i)
         arr[i] = i;
     return arr;
 }
 
 int *Sorter::create_descending_array(int size) {
-    auto arr = new int[size];
+    const auto arr = new int[size];
     for (int i = 0; i < size; ++i)
         arr[i] = size - i;
     return arr;
 }
 
 int *Sorter::create_mixed_array(int size) {
-    auto arr = new int[size];
-    int half = size / 2;
+    const auto arr = new int[size];
+    const int half = size / 2;
     for (int i = 0; i < size; ++i) {
         if (i < half) arr[i] = i;
         else arr[i] = size - i + half;
@@ -78,7 +78,7 @@ int *Sorter::create_mixed_array(int size) {
 }
 
 int *Sorter::copy_array(const int *source, int size) {
-    int* copy = new int[size];
+    const auto copy = new int[size];
     for (int i = 0; i < size; ++i) copy[i] = source[i];
     return copy;
 }

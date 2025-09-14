@@ -1,15 +1,24 @@
 #include <chrono>
 #include <iostream>
-#include <cstdlib>
 #include <ctime>
 #include <iomanip>
 #include "matrix.h"
 #include "sorts.h"
 #include <vector>
+#include <algorithm>
+
+#ifdef _WIN32
+    #include "windows.h"
+#endif
 
 // O(n^3)
 
 int main() {
+
+#ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+#endif
+
     std::srand(std::time(nullptr));
     Sorter sorter;
 
@@ -45,11 +54,11 @@ int main() {
         const int* descendingArray = sorter.create_descending_array(size);
         const int* mixedArray = sorter.create_mixed_array(size);
 
-        std::vector<const int*> arrays = {randomArray, ascendingArray, descendingArray, mixedArray};
+        std::vector arrays = {randomArray, ascendingArray, descendingArray, mixedArray};
         std::vector<std::string> types = {"Случайный", "Возрастающий", "Убывающий", "Смешанный"};
 
         for (int test = 0; test < 4; ++test) {
-            std::cout << test + 1 << ". " << types.at(test) << " массив:" << std::endl;
+            std::cout << test + 1 << ". " << types.at(test) << " массив (" << size << " элементов):" << std::endl;
 
             // Shell sort
             const auto temp1 = sorter.copy_array(arrays.at(test), size);
@@ -57,11 +66,32 @@ int main() {
             sorter.shell_sort(temp1, size);
             auto end = std::chrono::high_resolution_clock::now();
             const double shellTime = std::chrono::duration<double>(end - start).count();
-            std::cout << "Shell sort: " << shellTime << " s"<< std::endl;
+            std::cout << "\tShell sort: "
+            << std::fixed << std::setprecision(6) << shellTime << " s"<< std::endl;
             delete[] temp1;
 
             // Quick sort
+            const auto temp2 = sorter.copy_array(arrays.at(test), size);
+            start = std::chrono::high_resolution_clock::now();
+            sorter.quick_sort(temp2, 0, size - 1);
+            end = std::chrono::high_resolution_clock::now();
+            const double quickTime = std::chrono::duration<double>(end - start).count();
+            std::cout << "\tQuick sort: "
+            << std::fixed << std::setprecision(6) << quickTime << " s"<< std::endl;
+            delete[] temp2;
+
+            // C++ qs
+            const auto temp3 = sorter.copy_array(arrays.at(test), size);
+            start = std::chrono::high_resolution_clock::now();
+            std::qsort(temp3, size, sizeof(int), Sorter::compare);
+            end = std::chrono::high_resolution_clock::now();
+            const double quickTime2 = std::chrono::duration<double>(end - start).count();
+            std::cout << "\tC++ quick sort: "
+            << std::fixed << std::setprecision(6) << quickTime2 << " s"<< std::endl;
+            delete[] temp3;
         }
+
+        std::cout << "-------------------------------------" << std::endl;
 
         // Free memory
         delete[] randomArray;
