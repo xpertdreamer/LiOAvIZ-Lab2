@@ -4,6 +4,8 @@
 #include <iomanip>
 #include "matrix.h"
 
+// O(n^3)
+
 int main() {
     std::srand(std::time(nullptr));
 

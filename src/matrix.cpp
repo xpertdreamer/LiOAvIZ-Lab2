@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <chrono>
 
+// Constructor with memory allocation
 Matrix::Matrix(const int n) : size(n) {
     data = new int*[size];
     for (int i = 0; i < size; ++i) {
@@ -9,6 +10,7 @@ Matrix::Matrix(const int n) : size(n) {
     }
 }
 
+// Destructor with memory purification
 Matrix::~Matrix() {
     for (int i = 0; i < size; ++i) {
         delete[] data[i];
@@ -16,6 +18,12 @@ Matrix::~Matrix() {
     delete[] data;
 }
 
+/* Fill array with random value from 1 to 100
+
+ It isn`t fair for calculation of complexity,
+ but that was in task
+
+ oblepixa */
 void Matrix::fill_random() const {
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
