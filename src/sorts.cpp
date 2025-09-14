@@ -35,7 +35,7 @@ void Sorter::quick_sort(int *items, const int left, const int right) {
 
         if (i <= j) {
             y = items[i];
-            items[i] = items[j];
+            // items[i] = items[j];
             items[j] = y;
             i++; j--;
         }

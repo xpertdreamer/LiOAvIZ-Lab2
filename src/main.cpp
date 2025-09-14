@@ -20,7 +20,6 @@ int main() {
 #endif
 
     std::srand(std::time(nullptr));
-    Sorter sorter;
 
     std::cout << "ТЕСТИРОВАНИЕ ВРЕМЕНИ УМНОЖЕНИЯ МАТРИЦ" << std::endl;
     std::cout << "======================================" << std::endl;
@@ -49,10 +48,10 @@ int main() {
 
     for (const int size : Matrix::sizes) {
         // Test arrays
-        const int* randomArray = sorter.create_random_array(size);
-        const int* ascendingArray = sorter.create_ascending_array(size);
-        const int* descendingArray = sorter.create_descending_array(size);
-        const int* mixedArray = sorter.create_mixed_array(size);
+        const int* randomArray = Sorter::create_random_array(size);
+        const int* ascendingArray = Sorter::create_ascending_array(size);
+        const int* descendingArray = Sorter::create_descending_array(size);
+        const int* mixedArray = Sorter::create_mixed_array(size);
 
         std::vector arrays = {randomArray, ascendingArray, descendingArray, mixedArray};
         std::vector<std::string> types = {"Случайный", "Возрастающий", "Убывающий", "Смешанный"};
@@ -61,9 +60,9 @@ int main() {
             std::cout << test + 1 << ". " << types.at(test) << " массив (" << size << " элементов):" << std::endl;
 
             // Shell sort
-            const auto temp1 = sorter.copy_array(arrays.at(test), size);
+            const auto temp1 = Sorter::copy_array(arrays.at(test), size);
             auto start = std::chrono::high_resolution_clock::now();
-            sorter.shell_sort(temp1, size);
+            Sorter::shell_sort(temp1, size);
             auto end = std::chrono::high_resolution_clock::now();
             const double shellTime = std::chrono::duration<double>(end - start).count();
             std::cout << "\tShell sort: "
@@ -71,9 +70,9 @@ int main() {
             delete[] temp1;
 
             // Quick sort
-            const auto temp2 = sorter.copy_array(arrays.at(test), size);
+            const auto temp2 = Sorter::copy_array(arrays.at(test), size);
             start = std::chrono::high_resolution_clock::now();
-            sorter.quick_sort(temp2, 0, size - 1);
+            Sorter::quick_sort(temp2, 0, size - 1);
             end = std::chrono::high_resolution_clock::now();
             const double quickTime = std::chrono::duration<double>(end - start).count();
             std::cout << "\tQuick sort: "
@@ -81,7 +80,7 @@ int main() {
             delete[] temp2;
 
             // C++ qs
-            const auto temp3 = sorter.copy_array(arrays.at(test), size);
+            const auto temp3 = Sorter::copy_array(arrays.at(test), size);
             start = std::chrono::high_resolution_clock::now();
             std::qsort(temp3, size, sizeof(int), Sorter::compare);
             end = std::chrono::high_resolution_clock::now();
