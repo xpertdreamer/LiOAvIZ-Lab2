@@ -3,6 +3,8 @@
 //
 #include "sorts.h"
 
+#include <cstdlib>
+
 void Sorter::shell_sort(int *items, const int n) {
     int i, j, gap, k;
     int x, a[5] = {9, 5, 3, 2, 1};
@@ -42,5 +44,48 @@ void Sorter::quick_sort(int *items, const int left, const int right) {
     if (left < j) quick_sort(items, left, j);
     if (i < right) quick_sort(items, i, right);
 }
+
+int *Sorter::create_random_array(int size) {
+    const auto arr = new int[size];
+    for (int i = 0; i < size; ++i)
+        arr[i] = rand() % 1000 + 1;
+    return arr;
+}
+
+
+int *Sorter::create_ascending_array(int size) {
+    auto arr = new int[size];
+    for (int i = 0; i < size; ++i)
+        arr[i] = i;
+    return arr;
+}
+
+int *Sorter::create_descending_array(int size) {
+    auto arr = new int[size];
+    for (int i = 0; i < size; ++i)
+        arr[i] = size - i;
+    return arr;
+}
+
+int *Sorter::create_mixed_array(int size) {
+    auto arr = new int[size];
+    int half = size / 2;
+    for (int i = 0; i < size; ++i) {
+        if (i < half) arr[i] = i;
+        else arr[i] = size - i + half;
+    }
+    return arr;
+}
+
+int *Sorter::copy_array(const int *source, int size) {
+    int* copy = new int[size];
+    for (int i = 0; i < size; ++i) copy[i] = source[i];
+    return copy;
+}
+
+
+
+
+
 
 
