@@ -7,6 +7,8 @@ add_executable(matrix_mult
         src/main.cpp
         src/matrix.cpp
         src/matrix.h
+        src/sorts.h
+        src/sorts.cpp
 )
 
 include_directories(src)
