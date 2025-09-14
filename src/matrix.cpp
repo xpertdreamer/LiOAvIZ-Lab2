@@ -17,7 +17,7 @@ Matrix::~Matrix() {
     delete[] data;
 }
 
-void Matrix::fillRandom() const {
+void Matrix::fill_random() const {
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
             data[i][j] = std::rand() % 100 + 1;
@@ -33,14 +33,14 @@ const int* Matrix::operator[](const int index) const {
     return data[index];
 }
 
-int Matrix::getSize() const { 
+int Matrix::get_size() const {
     return size; 
 }
 
-long long multiplyMatrices(const Matrix& a, const Matrix& b, Matrix& c) {
+long long multiply_matrices(const Matrix& a, const Matrix& b, Matrix& c) {
     const auto start = std::chrono::high_resolution_clock::now();
 
-    const int size = a.getSize();
+    const int size = a.get_size();
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
             int sum = 0;

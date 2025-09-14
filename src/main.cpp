@@ -18,10 +18,10 @@ int main() {
         Matrix b(size);
         Matrix c(size);
 
-        a.fillRandom();
-        b.fillRandom();
+        a.fill_random();
+        b.fill_random();
 
-        const long long timeMicro = multiplyMatrices(a, b, c);
+        const long long timeMicro = multiply_matrices(a, b, c);
         const double timeSec = static_cast<double>(timeMicro) / 1000000.0;
 
         std::cout << "Время умножения: "

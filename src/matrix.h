@@ -15,12 +15,12 @@ public:
 
     constexpr static int sizes[] = {100, 200, 300, 400, 1000, 2000, 3000};
 
-    void fillRandom() const;
+    void fill_random() const;
     int* operator[](int index);
     const int* operator[](int index) const;
-    [[nodiscard]] int getSize() const;
+    [[nodiscard]] int get_size() const;
 };
 
-long long multiplyMatrices(const Matrix& a, const Matrix& b, Matrix& c);
+long long multiply_matrices(const Matrix& a, const Matrix& b, Matrix& c);
 
 #endif
