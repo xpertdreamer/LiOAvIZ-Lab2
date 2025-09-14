@@ -3,8 +3,8 @@ import numpy as np
 from scipy.interpolate import make_interp_spline
 
 # Данные
-sizes = np.array([100, 200, 300, 400, 1000, 2000, 3000])
-times = np.array([0.004271, 0.030542, 0.118736, 0.237303, 5.300499, 43.908810, 183.361023])
+sizes = np.array([100, 200, 300, 400, 1000, 2000, 4000, 10000])
+times = np.array([0.004271, 0.030542, 0.118736, 0.237303, 5.300499, 43.908810, ?, ?])
 
 plt.figure(figsize=(10, 6))
 

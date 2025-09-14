@@ -13,7 +13,7 @@ public:
     Matrix(const Matrix&) = delete;
     Matrix& operator=(const Matrix&) = delete;
 
-    constexpr static int sizes[] = {100, 200, 300, 400, 1000, 2000, 3000};
+    constexpr static int sizes[] = {100, 200, 300, 400, 1000, 2000, 4000, 10000};
 
     void fill_random() const;
     int* operator[](int index);

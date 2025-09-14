@@ -1,9 +1,8 @@
 #include "matrix.h"
 #include <cstdlib>
-#include <ctime>
 #include <chrono>
 
-Matrix::Matrix(int n) : size(n) {
+Matrix::Matrix(const int n) : size(n) {
     data = new int*[size];
     for (int i = 0; i < size; ++i) {
         data[i] = new int[size];
