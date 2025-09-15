@@ -4,7 +4,7 @@ from scipy.interpolate import make_interp_spline
 
 # Данные
 sizes = np.array([100, 200, 300, 400, 1000, 2000, 4000, 10000])
-times = np.array([0.004271, 0.030542, 0.118736, 0.237303, 5.300499, 43.908810, ?, ?])
+times = np.array([ 0.000573, 0.003869, 0.012829, 0.033208, 1.067853, 34.219271, 449.660521, 7409.165449])
 
 plt.figure(figsize=(10, 6))
 
@@ -31,7 +31,8 @@ plt.grid(True)
 plt.legend()
 
 # Настройка осей
-plt.xticks([100, 200, 300, 400, 1000, 2000, 3000])
+plt.setp(plt.gca().get_xticklabels(), rotation=90, ha='right')
+plt.xticks([100, 200, 300, 400, 1000, 2000, 4000, 10000])
 plt.yticks([0, 0.1, 1, 10, 50, 100, 200])
 
 plt.yscale('linear')
