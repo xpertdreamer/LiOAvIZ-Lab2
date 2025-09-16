@@ -17,7 +17,7 @@ public:
     Matrix(const Matrix&) = delete;
     Matrix& operator=(const Matrix&) = delete;
 
-    constexpr static int sizes[] = {100, 200, 300, 400, 1000, 2000, 4000, 10000};
+    constexpr static int sizes[] = {100, 200, 300, 400, 1000, 2000, 4000, 10000, 50000};
 
     void fill_random() const;
     /* Operator overload for index access
