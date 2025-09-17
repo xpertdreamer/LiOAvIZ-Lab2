@@ -20,7 +20,7 @@ int main() {
 #endif
 
     std::srand(std::time(nullptr));
-    /*
+
     std::cout << "ТЕСТИРОВАНИЕ ВРЕМЕНИ УМНОЖЕНИЯ МАТРИЦ" << std::endl;
     std::cout << "======================================" << std::endl;
 
@@ -41,7 +41,7 @@ int main() {
         std::cout << "Время умножения: "
                   << std::fixed << std::setprecision(6) << timeSec
                   << " сек" << std::endl;
-    } */
+    }
 
     std::cout << "СРАВНЕНИЕ АЛГОРИТМОВ СОРТИРОВКИ" << std::endl;
     std::cout << "======================================" << std::endl;
