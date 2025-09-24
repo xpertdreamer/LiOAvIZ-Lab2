@@ -10,7 +10,7 @@
 
 ### Options for release (maybe faster?):
 ```
--DCMAKE_BUILD_TYPE=Debug
+-DCMAKE_BUILD_TYPE=Release
 ```
 
 
